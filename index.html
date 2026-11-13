@@ -1,0 +1,2486 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 GIẢI MÃ MẬT MÃ — SULFURIC ACID VÀ MUỐI SULFATE</title>
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX 0.16 CDN (CSS + JS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    
+    <!-- Mammoth.js CDN để đọc file .docx -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+
+    <style>
+        :root {
+            --accent-color: #f5c542;
+            --accent-text: #1e293b;
+            --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #e6eeff 50%, #f5f3ff 100%);
+            --header-gradient: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-light: #e2e8f0;
+            --success-bg: #dcfce7;
+            --success-border: #16a34a;
+            --success-text: #14532d;
+            --danger-bg: #fee2e2;
+            --danger-border: #dc2626;
+            --danger-text: #7f1d1d;
+            --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 14px 30px rgba(49, 46, 129, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 20px 16px 60px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Chống vỡ công thức KaTeX */
+        .katex {
+            white-space: nowrap !important;
+            font-size: 1.05em;
+        }
+
+        /* 1. ĐẦU TRANG */
+        .worksheet-header {
+            background: var(--header-gradient);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 26px 32px;
+            border: 4px solid var(--accent-color);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header-title-group {
+            flex: 1 1 500px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .worksheet-title {
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .student-info-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.14);
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .info-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-field label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #e0e7ff;
+        }
+
+        .info-field input {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            background: #ffffff;
+            min-width: 180px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .info-field input:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* 2. HỘP HƯỚNG DẪN NGẮN */
+        .guide-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .guide-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .guide-step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #4f46e5;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* 3. THANH MẬT MÃ */
+        .cipher-bar-wrapper {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 18px 24px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #e0e7ff;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .cipher-bar-label {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4338ca;
+            margin-bottom: 12px;
+        }
+
+        .cipher-slots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cipher-slot {
+            width: 52px;
+            height: 60px;
+            border-radius: 12px;
+            border: 2.5px dashed #94a3b8;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .cipher-slot-num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #64748b;
+            position: absolute;
+            top: 4px;
+            left: 6px;
+        }
+
+        .cipher-slot-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.65rem;
+            font-weight: 900;
+            color: #94a3b8;
+        }
+
+        .cipher-slot.filled {
+            border-style: solid;
+            border-color: #1e293b;
+            background: var(--accent-color);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .cipher-slot.filled .cipher-slot-num {
+            color: #1e293b;
+        }
+
+        .cipher-slot.filled .cipher-slot-val {
+            color: #0f172a;
+        }
+
+        /* TIÊU ĐỀ PHẦN */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #1e1b4b;
+            margin-bottom: 16px;
+            padding-left: 4px;
+        }
+
+        .section-pill {
+            background: #4f46e5;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        /* 4. PHẦN A — CÂU HỎI (8 màu viền trên xoay vòng) */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
+            margin-bottom: 34px;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            border-top-width: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .border-top-0 { border-top-color: #ef4444; }
+        .border-top-1 { border-top-color: #f97316; }
+        .border-top-2 { border-top-color: #eab308; }
+        .border-top-3 { border-top-color: #22c55e; }
+        .border-top-4 { border-top-color: #06b6d4; }
+        .border-top-5 { border-top-color: #3b82f6; }
+        .border-top-6 { border-top-color: #8b5cf6; }
+        .border-top-7 { border-top-color: #ec4899; }
+
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .q-badge {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: #312e81;
+            background: #e0e7ff;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .q-weight {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .q-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 14px;
+            line-height: 1.55;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1.5px solid #cbd5e1;
+            background: #f8fafc;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.96rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            transition: all 0.18s ease;
+        }
+
+        .option-btn:not(:disabled):hover {
+            background: #eef2ff;
+            border-color: #6366f1;
+            transform: translateX(2px);
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+        }
+
+        .opt-letter {
+            font-weight: 800;
+            color: #4f46e5;
+            min-width: 22px;
+        }
+
+        .option-btn.correct {
+            background: var(--success-bg) !important;
+            border-color: var(--success-border) !important;
+            color: var(--success-text) !important;
+            font-weight: 700;
+        }
+
+        .option-btn.correct .opt-letter {
+            color: var(--success-border);
+        }
+
+        .option-btn.wrong {
+            background: var(--danger-bg) !important;
+            border-color: var(--danger-border) !important;
+            color: var(--danger-text) !important;
+            font-weight: 700;
+        }
+
+        .option-btn.wrong .opt-letter {
+            color: var(--danger-border);
+        }
+
+        /* 5. PHẦN B — KHỐI CHỮ 5x7 */
+        .blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .letter-block-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 14px;
+            border: 2.5px solid #cbd5e1;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .letter-block-card.locked {
+            opacity: 0.48;
+            filter: grayscale(0.65);
+            background: #f1f5f9;
+            pointer-events: none;
+        }
+
+        .letter-block-card.unlocked {
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .letter-block-card.completed {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+
+        .block-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        .letter-block-card.unlocked .block-header {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .letter-block-card.completed .block-header {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .matrix-5x7 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            width: 100%;
+            max-width: 210px;
+        }
+
+        .matrix-cell {
+            aspect-ratio: 1 / 1;
+            border-radius: 6px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.12s, background-color 0.2s;
+        }
+
+        .matrix-cell:hover {
+            background: #f1f5f9;
+            transform: scale(1.05);
+        }
+
+        .matrix-cell.found {
+            background: var(--accent-color) !important;
+            border-color: #0f172a !important;
+            color: #0f172a !important;
+            transform: scale(1.03);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes shakeCell {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
+        .matrix-cell.shake {
+            animation: shakeCell 0.25s ease;
+            background: #fee2e2;
+        }
+
+        .block-footer-digit {
+            margin-top: 10px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 8px;
+        }
+
+        .revealed-digit {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #15803d;
+            line-height: 1;
+            animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .locked-hint {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulseHighlight {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 197, 66, 0.85); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(245, 197, 66, 0); }
+            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+        }
+
+        .letter-block-card.just-unlocked {
+            animation: pulseHighlight 0.9s ease-out;
+        }
+
+        /* 6. HÀNG NÚT HÀNH ĐỘNG */
+        .actions-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin: 28px 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+            filter: brightness(1.05);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        .btn-teacher {
+            background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%);
+        }
+
+        /* 7. BANNER MẬT MÃ HOÀN THÀNH */
+        .cipher-banner {
+            display: none;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+            color: #ffffff;
+            border: 4px solid var(--accent-color);
+            border-radius: 22px;
+            padding: 28px 24px;
+            text-align: center;
+            margin: 24px 0;
+            box-shadow: 0 16px 36px rgba(49, 46, 129, 0.28);
+            animation: popIn 0.45s ease;
+        }
+
+        .cipher-banner.visible {
+            display: block;
+        }
+
+        .banner-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .banner-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: rgba(255, 255, 255, 0.12);
+            display: inline-block;
+            padding: 10px 28px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            margin: 8px 0 14px;
+            color: #ffffff;
+        }
+
+        .banner-sub {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e0e7ff;
+        }
+
+        /* 8. BẢNG KẾT QUẢ SAU KHI NỘP BÀI */
+        .results-panel {
+            display: none;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 26px;
+            border: 2px solid #cbd5e1;
+            box-shadow: var(--shadow-lg);
+            margin-top: 24px;
+        }
+
+        .results-panel.visible {
+            display: block;
+        }
+
+        .score-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #f1f5f9;
+            margin-bottom: 18px;
+        }
+
+        .score-big {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #4f46e5;
+        }
+
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .review-item {
+            background: #fef2f2;
+            border-left: 5px solid #dc2626;
+            padding: 14px 18px;
+            border-radius: 10px;
+        }
+
+        .review-q {
+            font-weight: 700;
+            color: #7f1d1d;
+            margin-bottom: 6px;
+        }
+
+        .review-ans {
+            font-size: 0.94rem;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .review-exp {
+            font-size: 0.92rem;
+            color: #334155;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 6px;
+            border: 1px solid #fecaca;
+        }
+
+        /* MODAL THÔNG BÁO THAY THẾ ALERT() */
+        .toast-box {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1e293b;
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            transform: translateY(120px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            max-width: 380px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .toast-box.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* PANEL SOẠN ĐỀ (GIÁO VIÊN) */
+        .teacher-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 24px 16px;
+        }
+
+        .teacher-modal-overlay.open {
+            display: block;
+        }
+
+        .teacher-panel {
+            background: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .tp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .tp-header h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #312e81;
+        }
+
+        .btn-close-tp {
+            background: #e2e8f0;
+            color: #1e293b;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .tp-settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .tp-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tp-field label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .tp-field input[type="text"],
+        .tp-field input[type="number"],
+        .tp-field select,
+        .tp-field textarea {
+            padding: 9px 12px;
+            border-radius: 8px;
+            border: 1.5px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 0.94rem;
+            width: 100%;
+        }
+
+        .color-swatches {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .swatch-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #1e293b;
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .swatch-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .word-import-box {
+            background: #eff6ff;
+            border: 1.5px dashed #3b82f6;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .word-import-box h4 {
+            color: #1d4ed8;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .word-notes {
+            font-size: 0.84rem;
+            color: #334155;
+            margin-top: 8px;
+            line-height: 1.45;
+        }
+
+        .tp-q-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 460px;
+            overflow-y: auto;
+            padding-right: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tp-q-card {
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 14px;
+            background: #ffffff;
+        }
+
+        .tp-q-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        .tp-q-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .tp-q-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tp-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #e2e8f0;
+            padding-top: 16px;
+        }
+
+        .export-notice {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-top: 10px;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 6. IN PHIẾU KHỔ A3 NGANG (1 TRANG) */
+        @media print {
+            @page {
+                size: A3 landscape;
+                margin: 8mm;
+            }
+
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                font-size: 11px !important;
+                color: #000000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            /* Ẩn nút bấm, bảng kết quả, modal, toast */
+            .actions-bar,
+            .results-panel,
+            .teacher-modal-overlay,
+            .toast-box,
+            .guide-box {
+                display: none !important;
+            }
+
+            /* Đầu trang nền trắng tiết kiệm mực */
+            .worksheet-header {
+                background: #ffffff !important;
+                color: #000000 !important;
+                border: 2px solid #000000 !important;
+                box-shadow: none !important;
+                padding: 8px 14px !important;
+                margin-bottom: 8px !important;
+                border-radius: 10px !important;
+            }
+
+            .header-badge {
+                background: #f1f5f9 !important;
+                color: #000000 !important;
+                border: 1px solid #94a3b8 !important;
+                font-size: 9px !important;
+                padding: 2px 8px !important;
+                margin-bottom: 2px !important;
+            }
+
+            .worksheet-title {
+                font-size: 18px !important;
+                text-shadow: none !important;
+                color: #000000 !important;
+            }
+
+            .student-info-box {
+                background: #ffffff !important;
+                border: 1px solid #000000 !important;
+                padding: 6px 10px !important;
+            }
+
+            .info-field label {
+                color: #000000 !important;
+                font-size: 9px !important;
+            }
+
+            .info-field input {
+                border: none !important;
+                border-bottom: 1px dotted #000000 !important;
+                border-radius: 0 !important;
+                padding: 2px 4px !important;
+                font-size: 11px !important;
+                min-width: 140px !important;
+            }
+
+            /* Thanh mật mã gọn */
+            .cipher-bar-wrapper {
+                background: #ffffff !important;
+                border: 1.5px solid #000000 !important;
+                box-shadow: none !important;
+                padding: 6px 12px !important;
+                margin-bottom: 8px !important;
+                border-radius: 10px !important;
+            }
+
+            .cipher-bar-label {
+                font-size: 10px !important;
+                color: #000000 !important;
+                margin-bottom: 4px !important;
+            }
+
+            .cipher-slot {
+                width: 34px !important;
+                height: 36px !important;
+                border: 1.5px solid #000000 !important;
+                background: #ffffff !important;
+            }
+
+            .cipher-slot-val {
+                font-size: 13px !important;
+                color: transparent !important;
+            }
+
+            .section-heading {
+                font-size: 12px !important;
+                margin-bottom: 6px !important;
+                color: #000000 !important;
+            }
+
+            .section-pill {
+                background: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #000000 !important;
+                font-size: 10px !important;
+                padding: 1px 6px !important;
+            }
+
+            /* Câu hỏi xếp 4 cột (2 hàng) */
+            .questions-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 8px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .question-card {
+                padding: 8px 10px !important;
+                border: 1px solid #64748b !important;
+                border-top-width: 3px !important;
+                box-shadow: none !important;
+                border-radius: 8px !important;
+                page-break-inside: avoid;
+            }
+
+            .q-header {
+                margin-bottom: 4px !important;
+            }
+
+            .q-badge {
+                background: #f1f5f9 !important;
+                color: #000000 !important;
+                font-size: 10px !important;
+                padding: 1px 6px !important;
+            }
+
+            .q-text {
+                font-size: 10.5px !important;
+                margin-bottom: 6px !important;
+                line-height: 1.3 !important;
+            }
+
+            .options-list {
+                gap: 3px !important;
+            }
+
+            .option-btn {
+                padding: 3px 6px !important;
+                font-size: 10px !important;
+                border: 1px solid #cbd5e1 !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+                border-radius: 4px !important;
+            }
+
+            .opt-letter {
+                color: #000000 !important;
+                min-width: 16px !important;
+            }
+
+            /* Tất cả khối xếp trên 1 hàng, ô chữ nhỏ lại 18px */
+            .blocks-grid {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fit, minmax(95px, 1fr)) !important;
+                gap: 5px !important;
+                margin-bottom: 0 !important;
+            }
+
+            .letter-block-card {
+                opacity: 1 !important;
+                filter: none !important;
+                background: #ffffff !important;
+                border: 1.5px solid #000000 !important;
+                padding: 4px !important;
+                box-shadow: none !important;
+                border-radius: 6px !important;
+            }
+
+            .block-header {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-size: 8.5px !important;
+                padding: 2px !important;
+                margin-bottom: 3px !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+            }
+
+            .matrix-5x7 {
+                max-width: 94px !important;
+                gap: 1.5px !important;
+            }
+
+            .matrix-cell {
+                width: 17px !important;
+                height: 17px !important;
+                font-size: 8.5px !important;
+                border: 1px solid #64748b !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+                border-radius: 2px !important;
+            }
+
+            .block-footer-digit {
+                min-height: 20px !important;
+                margin-top: 3px !important;
+                padding-top: 2px !important;
+            }
+
+            .letter-block-card {
+                opacity: 1 !important;
+                filter: none !important;
+                background: #ffffff !important;
+                border: 1.5px solid #000000 !important;
+                padding: 6px !important;
+                box-shadow: none !important;
+                border-radius: 8px !important;
+            }
+
+            .block-header {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-size: 9px !important;
+                padding: 2px !important;
+                margin-bottom: 4px !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+            }
+
+            .matrix-5x7 {
+                max-width: 100px !important;
+                gap: 2px !important;
+            }
+
+            .matrix-cell {
+                width: 18px !important;
+                height: 18px !important;
+                font-size: 9px !important;
+                border: 1px solid #64748b !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+                border-radius: 2px !important;
+            }
+
+            .block-footer-digit {
+                min-height: 22px !important;
+                margin-top: 4px !important;
+                padding-top: 3px !important;
+            }
+
+            .locked-hint {
+                font-size: 8px !important;
+                color: #000000 !important;
+            }
+
+            .cipher-banner {
+                background: #ffffff !important;
+                color: #000000 !important;
+                border: 2px solid #000000 !important;
+                box-shadow: none !important;
+                padding: 8px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 1. ĐẦU TRANG -->
+    <header class="worksheet-header">
+        <div class="header-title-group">
+            <div class="header-badge">CHỦ ĐỀ: SULFURIC ACID VÀ MUỐI SULFATE</div>
+            <h1 class="worksheet-title" id="ui-worksheet-title">🔐 GIẢI MÃ MẬT MÃ — HÓA HỌC</h1>
+        </div>
+        <div class="student-info-box">
+            <div class="info-field">
+                <label for="student-name">Họ và tên học sinh</label>
+                <input type="text" id="student-name" placeholder="Nhập họ tên...">
+            </div>
+            <div class="info-field">
+                <label for="student-class">Lớp</label>
+                <input type="text" id="student-class" placeholder="Ví dụ: 11A1">
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HỘP HƯỚNG DẪN NGẮN (3 Ý) -->
+    <section class="guide-box">
+        <div class="guide-item">
+            <div class="guide-step">1</div>
+            <div>Trả lời <strong>đúng</strong> câu hỏi trắc nghiệm để mở khóa khối chữ tương ứng bên dưới.</div>
+        </div>
+        <div class="guide-item">
+            <div class="guide-step">2</div>
+            <div>Tìm và bấm chọn <strong>tất cả các ô chứa chữ giải mã</strong> trong khối để làm hiện hình chữ số bí mật.</div>
+        </div>
+        <div class="guide-item">
+            <div class="guide-step">3</div>
+            <div>Hoàn thành <strong>đủ tất cả các khối</strong> để giải mã dãy mật mã bí ẩn của phiếu học tập!</div>
+        </div>
+    </section>
+
+    <!-- 3. THANH MẬT MÃ -->
+    <section class="cipher-bar-wrapper">
+        <div class="cipher-bar-label">🔑 TIẾN TRÌNH GIẢI MÃ MẬT MÃ</div>
+        <div class="cipher-slots" id="cipher-slots-container"></div>
+    </section>
+
+    <!-- 4. PHẦN A — CÂU HỎI -->
+    <section>
+        <div class="section-heading">
+            <span class="section-pill">PHẦN A</span>
+            <span>TRẮC NGHIỆM MỞ KHÓA KHỐI CHỮ (Chọn 1 đáp án duy nhất cho mỗi câu)</span>
+        </div>
+        <div class="questions-grid" id="questions-container"></div>
+    </section>
+
+    <!-- 5. PHẦN B — KHỐI CHỮ -->
+    <section>
+        <div class="section-heading">
+            <span class="section-pill">PHẦN B</span>
+            <span>BẢNG GIẢI MÃ CHỮ SỐ (Tìm đủ ô chứa chữ giải mã trong từng khối đã mở)</span>
+        </div>
+        <div class="blocks-grid" id="blocks-container"></div>
+    </section>
+
+    <!-- 7. BANNER MẬT MÃ (Chỉ hiện khi tất cả khối hoàn thành) -->
+    <section class="cipher-banner" id="cipher-banner">
+        <div class="banner-title">🎉 XUẤT SẮC! BẠN ĐÃ GIẢI MÃ THÀNH CÔNG MẬT MÃ 🎉</div>
+        <div class="banner-code" id="banner-code-text">11 8C HA MH OC</div>
+        <div class="banner-sub">Chúc mừng bạn đã chinh phục trọn vẹn kiến thức Sulfuric acid và muối Sulfate!</div>
+    </section>
+
+    <!-- 6. HÀNG NÚT -->
+    <section class="actions-bar">
+        <button type="button" class="btn btn-submit" id="btn-submit">✅ Nộp bài</button>
+        <button type="button" class="btn btn-reset" id="btn-reset">🔄 Làm lại</button>
+        <button type="button" class="btn btn-print" id="btn-print">🖨️ In phiếu (A3)</button>
+        <button type="button" class="btn btn-teacher" id="btn-open-teacher">⚙️ Soạn đề (giáo viên)</button>
+    </section>
+
+    <!-- 8. BẢNG KẾT QUẢ -->
+    <section class="results-panel" id="results-panel">
+        <div class="score-header">
+            <div>
+                <h3 style="font-size: 1.3rem; font-weight: 800; color: #1e1b4b;">📊 KẾT QUẢ BÀI LÀM</h3>
+                <p id="result-student-summary" style="color: #475569; font-weight: 600; margin-top: 4px;"></p>
+            </div>
+            <div class="score-big" id="result-score-display">0.0 / 10 điểm</div>
+        </div>
+        <div id="review-section-container"></div>
+    </section>
+</div>
+
+<!-- TOAST THÔNG BÁO -->
+<div class="toast-box" id="toast-box"></div>
+
+<!-- PANEL SOẠN ĐỀ (GIÁO VIÊN) -->
+<div class="teacher-modal-overlay" id="teacher-modal">
+    <div class="teacher-panel">
+        <div class="tp-header">
+            <h2>⚙️ BẢNG SOẠN ĐỀ & CẤU HÌNH (DÀNH CHO GIÁO VIÊN)</h2>
+            <button type="button" class="btn-close-tp" id="btn-close-teacher">✕ Đóng</button>
+        </div>
+
+        <div class="tp-settings-grid">
+            <div class="tp-field">
+                <label for="tp-title">Tiêu đề phiếu (để trống = mặc định)</label>
+                <input type="text" id="tp-title" placeholder="🔐 GIẢI MÃ MẬT MÃ">
+            </div>
+            <div class="tp-field">
+                <label for="tp-cipher">Từ khóa mật mã (mỗi ký tự = 1 câu hỏi)</label>
+                <div style="display: flex; gap: 6px;">
+                    <input type="text" id="tp-cipher" placeholder="118CHAMHOC">
+                    <button type="button" id="btn-sync-cipher-count" style="background: #4f46e5; color: #fff; border: none; padding: 0 12px; border-radius: 8px; font-weight: 700; cursor: pointer; white-space: nowrap;" title="Tự động thêm/bớt số câu hỏi bằng đúng số ký tự từ khóa">Đồng bộ số câu</button>
+                </div>
+            </div>
+            <div class="tp-field">
+                <label>Màu tô khối (tự do hoặc 6 màu mẫu)</label>
+                <div class="color-swatches">
+                    <input type="color" id="tp-color-picker" value="#f5c542" style="width: 38px; height: 32px; border: none; background: none; cursor: pointer;">
+                    <button type="button" class="swatch-btn" data-color="#f5c542" style="background:#f5c542;" title="Vàng"></button>
+                    <button type="button" class="swatch-btn" data-color="#4ade80" style="background:#4ade80;" title="Xanh lá"></button>
+                    <button type="button" class="swatch-btn" data-color="#f472b6" style="background:#f472b6;" title="Hồng"></button>
+                    <button type="button" class="swatch-btn" data-color="#38bdf8" style="background:#38bdf8;" title="Xanh dương"></button>
+                    <button type="button" class="swatch-btn" data-color="#c084fc" style="background:#c084fc;" title="Tím"></button>
+                    <button type="button" class="swatch-btn" data-color="#fb923c" style="background:#fb923c;" title="Cam"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NHẬP TỪ WORD (.DOCX) -->
+        <div class="word-import-box">
+            <h4>📄 Nhập đề nhanh từ file Word (.docx)</h4>
+            <input type="file" id="tp-word-input" accept=".docx" style="margin-top: 6px;">
+            <div class="word-notes">
+                <strong>Lưu ý cho giáo viên:</strong><br>
+                • Chỉ nhận file <code>.docx</code> (không nhận <code>.doc</code> cũ). Định dạng chuẩn: bắt đầu bằng <code>Câu 1:</code>, các đáp án <code>A. ...</code> <code>B. ...</code> <code>C. ...</code> <code>D. ...</code> và dòng cuối <code>Đáp án: A</code>.<br>
+                • Chỉ số trên/dưới trong Word tự động chuyển sang <code>$^{...}$</code> / <code>$_{...}$</code>. Công thức gõ bằng <strong>Equation Editor</strong> trong Word không đọc được.<br>
+                • Dữ liệu nhập từ Word chỉ nạp vào bộ nhớ tạm — hãy bấm <strong>"Lưu đề"</strong> để giữ lại.
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <strong style="color: #1e1b4b;">Danh sách câu hỏi (<span id="tp-q-count">10</span> câu)</strong>
+            <button type="button" id="btn-add-question" style="background: #0284c7; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 700; cursor: pointer;">+ Thêm câu hỏi</button>
+        </div>
+
+        <div class="tp-q-list" id="tp-questions-list"></div>
+
+        <div class="tp-toolbar">
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <button type="button" class="btn btn-submit" id="btn-save-quiz">💾 Lưu đề</button>
+                <button type="button" class="btn btn-reset" id="btn-restore-default">↩️ Khôi phục đề mẫu</button>
+            </div>
+            <button type="button" class="btn btn-print" id="btn-export-student">📥 Xuất file cho HS (.html)</button>
+        </div>
+
+        <div class="export-notice">
+            ℹ️ <strong>Thông tin bảo mật khi xuất file:</strong> File xuất ra sẽ tự động lưu đề hiện tại, ẩn hoàn toàn nút <em>"Soạn đề (giáo viên)"</em> và bảng chỉnh sửa để học sinh làm bài trực tiếp. Tuy nhiên, do là file HTML độc lập chạy ngoại tuyến, dữ liệu đáp án vẫn nằm trong mã nguồn file nên không ngăn được việc mở mã nguồn để xem.
+        </div>
+    </div>
+</div>
+
+<!-- DỮ LIỆU CẤU HÌNH ĐƯỢC NHÚNG (Sẽ được cập nhật tự động khi xuất file cho HS) -->
+<script id="embedded-quiz-data" type="application/json">null</script>
+
+<script>
+/**
+ * 1. BẢNG MẪU CHỮ SỐ 5x7 CHUẨN (TUYỆT ĐỐI KHÔNG THAY ĐỔI)
+ * 1 = ô thuộc nét chữ số, 0 = ô nền
+ */
+const DIGIT_PATTERNS = {
+    0: ["01110", "10001", "10001", "10001", "10001", "10001", "01110"],
+    1: ["00100", "01100", "00100", "00100", "00100", "00100", "01110"],
+    2: ["01110", "10001", "00001", "00110", "01000", "10000", "11111"],
+    3: ["11111", "00010", "00100", "00010", "00001", "10001", "01110"],
+    4: ["00010", "00110", "01010", "10010", "11111", "00010", "00010"],
+    5: ["11111", "10000", "11110", "00001", "00001", "10001", "01110"],
+    6: ["00110", "01000", "10000", "11110", "10001", "10001", "01110"],
+    7: ["11111", "00001", "00010", "00100", "01000", "01000", "01000"],
+    8: ["01110", "10001", "10001", "01110", "10001", "10001", "01110"],
+    9: ["01110", "10001", "10001", "01111", "00001", "00010", "01100"]
+};
+
+const DEFAULT_TITLE = "🔐 GIẢI MÃ MẬT MÃ — SULFURIC ACID VÀ MUỐI SULFATE";
+const DEFAULT_CIPHER = "118CHAMHOC";
+const DEFAULT_COLOR = "#f5c542";
+const STORAGE_KEY = "giai_ma_mat_ma_h2so4_v1";
+
+/**
+ * 2. BỘ CÂU HỎI MẪU CHUẨN KIẾN THỨC HÓA HỌC 11 (SULFURIC ACID & MUỐI SULFATE)
+ * Số câu hỏi = 10, khớp với 10 ký tự của từ khóa mật mã "118CHAMHOC"
+ * Phân bố đáp án đúng đều: A (3), B (3), C (2), D (2)
+ */
+const DEFAULT_QUESTIONS = [
+    {
+        question: "Trong công nghiệp, quá trình sản xuất sulfuric acid ($H_2SO_4$) theo phương pháp tiếp xúc sử dụng chất xúc tác nào ở giai đoạn oxi hóa $SO_2$ thành $SO_3$?",
+        options: [
+            "$V_2O_5$ (vanadium(V) oxide)",
+            "$Fe_2O_3$ (iron(III) oxide)",
+            "$MnO_2$ (manganese(IV) oxide)",
+            "$Al_2O_3$ (aluminium oxide)"
+        ],
+        correct: "A",
+        decodeChar: "A",
+        cipherDigit: 1,
+        weight: 1,
+        explanation: "Phản ứng $2SO_2 + O_2 \\rightleftharpoons 2SO_3$ thực hiện ở $450^\\circ C - 500^\\circ C$ với xúc tác $V_2O_5$."
+    },
+    {
+        question: "Khi pha loãng dung dịch sulfuric acid ($H_2SO_4$) đặc, cách thao tác nào sau đây đảm bảo an toàn hóa học?",
+        options: [
+            "Rót nhanh nước vào acid đặc và khuấy mạnh.",
+            "Rót từ từ acid đặc vào nước và khuấy nhẹ bằng đũa thủy tinh.",
+            "Rót đồng thời nước và acid đặc vào cốc thủy tinh.",
+            "Đun nóng nước trước rồi đổ nhanh acid đặc vào."
+        ],
+        correct: "B",
+        decodeChar: "B",
+        cipherDigit: 1,
+        weight: 1,
+        explanation: "$H_2SO_4$ đặc tan trong nước tỏa nhiệt rất lớn và nặng hơn nước, nên phải rót từ từ acid vào nước để tránh sôi bắn gây bỏng."
+    },
+    {
+        question: "Thuốc thử đặc trưng dùng để nhận biết ion sulfate ($SO_4^{2-}$) trong dung dịch là dung dịch chứa ion nào sau đây?",
+        options: [
+            "$Ag^+$ (tạo kết tủa trắng tan trong $NH_3$)",
+            "$Cu^{2+}$ (tạo dung dịch màu xanh lam)",
+            "$Ba^{2+}$ (tạo kết tủa trắng $BaSO_4$ không tan trong acid mạnh)",
+            "$Mg^{2+}$ (tạo kết tủa keo trắng)"
+        ],
+        correct: "C",
+        decodeChar: "C",
+        cipherDigit: 8,
+        weight: 1,
+        explanation: "Ion $Ba^{2+}$ phản ứng với $SO_4^{2-}$ tạo kết tủa trắng $BaSO_4$ bền vững, không tan trong nước và các dung dịch acid mạnh."
+    },
+    {
+        question: "Kim loại nào sau đây bị thụ động hóa (không phản ứng) trong dung dịch $H_2SO_4$ đặc, nguội?",
+        options: [
+            "$Cu$ và $Ag$",
+            "$Zn$ và $Mg$",
+            "$Na$ và $K$",
+            "$Al$, $Fe$ và $Cr$"
+        ],
+        correct: "D",
+        decodeChar: "D",
+        cipherDigit: 2,
+        weight: 1,
+        explanation: "Các kim loại $Al, Fe, Cr$ tạo lớp màng oxide bền bảo vệ bề mặt nên bị thụ động hóa trong $H_2SO_4$ đặc, nguội."
+    },
+    {
+        question: "Tính chất hóa học đặc trưng nổi bật nhất của dung dịch $H_2SO_4$ đặc, nóng so với dung dịch $H_2SO_4$ loãng là gì?",
+        options: [
+            "Tính oxi hóa mạnh và tính háo nước.",
+            "Tính khử mạnh và dễ bay hơi.",
+            "Tính base mạnh và làm xanh quỳ tím.",
+            "Tính lưỡng tính và không tan trong nước."
+        ],
+        correct: "A",
+        decodeChar: "A",
+        cipherDigit: 0,
+        weight: 1,
+        explanation: "Trong $H_2SO_4$ đặc, lưu huỳnh có số oxi hóa cao nhất (+6) nên có tính oxi hóa rất mạnh, đồng thời hấp thụ nước cực mạnh (tính háo nước)."
+    },
+    {
+        question: "Muối sulfate nào sau đây được dùng làm bột bó trong y học (bó bột gãy xương) và đúc tượng nhờ khả năng đông cứng khi nhào với nước?",
+        options: [
+            "$CuSO_4 \\cdot 5H_2O$ (phèn xanh)",
+            "$CaSO_4 \\cdot 0,5H_2O$ (thạch cao nung)",
+            "$MgSO_4 \\cdot 7H_2O$ (muối Epsom)",
+            "$Na_2SO_4 \\cdot 10H_2O$ (muối Glauber)"
+        ],
+        correct: "B",
+        decodeChar: "B",
+        cipherDigit: 2,
+        weight: 1,
+        explanation: "Thạch cao nung ($CaSO_4 \\cdot 0,5H_2O$ hoặc $CaSO_4 \\cdot H_2O$) kết hợp với nước tạo thạch cao sống rắn chắc, dùng bó bột và đúc tượng."
+    },
+    {
+        question: "Trong công nghiệp sản xuất $H_2SO_4$, người ta dùng dung dịch $H_2SO_4$ đặc (98%) để hấp thụ $SO_3$ thay vì dùng trực tiếp nước nhằm tạo ra sản phẩm nào?",
+        options: [
+            "Khí hydrogen sulfide ($H_2S$)",
+            "Khí sulfur dioxide ($SO_2$)",
+            "Oleum ($H_2SO_4 \\cdot nSO_3$)",
+            "Muối ammonium sulfate ($(NH_4)_2SO_4$)"
+        ],
+        correct: "C",
+        decodeChar: "C",
+        cipherDigit: 6,
+        weight: 1,
+        explanation: "Dùng $H_2SO_4$ đặc hấp thụ $SO_3$ tạo oleum ($H_2SO_4 \\cdot nSO_3$), tránh hiện tượng tạo sương mù acid khó ngưng tụ nếu cho $SO_3$ gặp nước trực tiếp."
+    },
+    {
+        question: "Cho một ít đường saccharose ($C_{12}H_{22}O_{11}$) vào cốc thủy tinh rồi nhỏ từ từ $H_2SO_4$ đặc vào. Hiện tượng quan sát được chứng tỏ tính háo nước của $H_2SO_4$ đặc là gì?",
+        options: [
+            "Đường tan tạo dung dịch màu xanh lam trong suốt.",
+            "Xuất hiện kết tủa trắng lắng xuống đáy cốc.",
+            "Có khí màu nâu đỏ thoát ra và dung dịch hóa vàng.",
+            "Đường hóa đen thành khối xốp carbon và bị đẩy trào lên kèm khí thoát ra."
+        ],
+        correct: "D",
+        decodeChar: "D",
+        cipherDigit: 9,
+        weight: 1,
+        explanation: "$H_2SO_4$ đặc hút nước của đường tạo than đen ($C$), sau đó oxi hóa một phần carbon sinh ra khí $CO_2$ và $SO_2$ đẩy cột than dâng trào."
+    },
+    {
+        question: "Dung dịch $H_2SO_4$ loãng có đầy đủ tính chất hóa học chung của một acid. Kim loại nào sau đây không tác dụng được với dung dịch $H_2SO_4$ loãng?",
+        options: [
+            "$Cu$ (copper)",
+            "$Zn$ (zinc)",
+            "$Fe$ (iron)",
+            "$Mg$ (magnesium)"
+        ],
+        correct: "A",
+        decodeChar: "A",
+        cipherDigit: 4,
+        weight: 1,
+        explanation: "Đồng ($Cu$) đứng sau hydrogen trong dãy hoạt động hóa học nên không phản ứng với dung dịch $H_2SO_4$ loãng."
+    },
+    {
+        question: "Muối ammonium sulfate ($(NH_4)_2SO_4$) được sử dụng rộng rãi trong nông nghiệp với vai trò chính là gì?",
+        options: [
+            "Thuốc trừ sâu sinh học",
+            "Phân đạm cung cấp nguyên tố nitrogen cho cây trồng",
+            "Chất kích thích nảy mầm hạt giống",
+            "Chất khử chua đất phèn"
+        ],
+        correct: "B",
+        decodeChar: "B",
+        cipherDigit: 7,
+        weight: 1,
+        explanation: "Ammonium sulfate ($(NH_4)_2SO_4$) chứa khoảng 21% nitrogen ở dạng ion $NH_4^+$, là loại phân đạm phổ biến giúp cây phát triển thân và lá."
+    }
+];
+
+/**
+ * 3. QUẢN LÝ TRẠNG THÁI ỨNG DỤNG (IN-MEMORY STATE)
+ */
+let quizConfig = {
+    title: DEFAULT_TITLE,
+    cipherText: DEFAULT_CIPHER,
+    accentColor: DEFAULT_COLOR,
+    questions: JSON.parse(JSON.stringify(DEFAULT_QUESTIONS))
+};
+
+// Trạng thái đang chơi (lưu trong bộ nhớ, không lưu vào localStorage)
+let gameState = {
+    answers: [],          // mảng lưu đáp án học sinh chọn ('A'|'B'|'C'|'D'|null)
+    unlockedBlocks: [],   // boolean[]
+    completedBlocks: [],  // boolean[]
+    blockGrids: [],       // ma trận 7x5 cho mỗi câu: { char, isTarget, found }
+    submitted: false
+};
+
+// Kiểm tra chế độ xuất file cho học sinh
+const IS_STUDENT_EXPORT = document.body.dataset.studentMode === "true";
+
+/**
+ * 4. KHỞI TẠO & TẢI CẤU HÌNH
+ */
+function loadInitialConfig() {
+    // Ưu tiên 1: Dữ liệu nhúng khi xuất file cho học sinh
+    const embeddedEl = document.getElementById("embedded-quiz-data");
+    if (embeddedEl && embeddedEl.textContent.trim() !== "null") {
+        try {
+            const parsed = JSON.parse(embeddedEl.textContent);
+            if (parsed && Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+                quizConfig = parsed;
+                return;
+            }
+        } catch (e) {
+            console.warn("Lỗi đọc dữ liệu nhúng:", e);
+        }
+    }
+
+    // Ưu tiên 2: localStorage của giáo viên (nếu không phải bản xuất HS)
+    if (!IS_STUDENT_EXPORT) {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (parsed && Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+                    quizConfig = parsed;
+                }
+            }
+        } catch (e) {
+            console.warn("Không thể đọc localStorage:", e);
+        }
+    }
+}
+
+function applyThemeColor(color) {
+    const validColor = color || DEFAULT_COLOR;
+    document.documentElement.style.setProperty("--accent-color", validColor);
+}
+
+function applyWorksheetTitle(title) {
+    const finalTitle = (title && title.trim()) ? title.trim() : "🔐 GIẢI MÃ MẬT MÃ";
+    document.getElementById("ui-worksheet-title").textContent = finalTitle;
+    document.title = finalTitle;
+}
+
+/**
+ * 5. TẠO MA TRẬN CHỮ SỐ 5x7 CHO TỪNG KHỐI
+ */
+function buildBlockGrid(cipherDigit, decodeChar) {
+    const digit = (cipherDigit >= 0 && cipherDigit <= 9) ? Number(cipherDigit) : 0;
+    const targetChar = (decodeChar || "A").toUpperCase().charAt(0);
+    const pattern = DIGIT_PATTERNS[digit];
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const decoyChars = alphabet.split("").filter(c => c !== targetChar);
+
+    const grid = [];
+    for (let r = 0; r < 7; r++) {
+        const row = [];
+        for (let c = 0; c < 5; c++) {
+            const isTarget = pattern[r][c] === "1";
+            const char = isTarget
+                ? targetChar
+                : decoyChars[Math.floor(Math.random() * decoyChars.length)];
+            row.push({
+                char,
+                isTarget,
+                found: false
+            });
+        }
+        grid.push(row);
+    }
+    return grid;
+}
+
+function initGameState() {
+    const n = quizConfig.questions.length;
+    gameState = {
+        answers: new Array(n).fill(null),
+        unlockedBlocks: new Array(n).fill(false),
+        completedBlocks: new Array(n).fill(false),
+        blockGrids: quizConfig.questions.map(q => buildBlockGrid(q.cipherDigit, q.decodeChar)),
+        submitted: false
+    };
+}
+
+/**
+ * 6. RENDER CÔNG THỨC KATEX AN TOÀN (CHỈ TRONG CẶP $...$)
+ */
+function renderMathSafe(rawText) {
+    if (rawText === null || rawText === undefined) return "";
+    const text = String(rawText);
+    // Tách theo cặp $...$ không lồng nhau
+    const parts = text.split(/(\$[^$\n]+\$)/g);
+    return parts.map(part => {
+        if (part.startsWith("$") && part.endsWith("$") && part.length > 2) {
+            const tex = part.slice(1, -1);
+            if (window.katex) {
+                try {
+                    return window.katex.renderToString(tex, {
+                        throwOnError: false,
+                        displayMode: false
+                    });
+                } catch (err) {
+                    return escapeHtml(part);
+                }
+            }
+            return escapeHtml(part);
+        }
+        return escapeHtml(part);
+    }).join("");
+}
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/**
+ * 7. RENDER GIAO DIỆN CHÍNH
+ */
+function renderAll() {
+    applyThemeColor(quizConfig.accentColor);
+    applyWorksheetTitle(quizConfig.title);
+    renderCipherBar();
+    renderQuestions();
+    renderBlocks();
+    updateBannerVisibility();
+
+    // Ẩn nút giáo viên nếu đang ở chế độ xuất file cho học sinh
+    if (IS_STUDENT_EXPORT) {
+        const teacherBtn = document.getElementById("btn-open-teacher");
+        const teacherModal = document.getElementById("teacher-modal");
+        if (teacherBtn) teacherBtn.remove();
+        if (teacherModal) teacherModal.remove();
+    }
+}
+
+function renderCipherBar() {
+    const container = document.getElementById("cipher-slots-container");
+    container.innerHTML = "";
+    quizConfig.questions.forEach((q, idx) => {
+        const isDone = gameState.completedBlocks[idx];
+        const slot = document.createElement("div");
+        slot.className = "cipher-slot" + (isDone ? " filled" : "");
+        slot.innerHTML = `
+            <span class="cipher-slot-num">#${idx + 1}</span>
+            <span class="cipher-slot-val">${isDone ? q.cipherDigit : "?"}</span>
+        `;
+        container.appendChild(slot);
+    });
+}
+
+function renderQuestions() {
+    const container = document.getElementById("questions-container");
+    container.innerHTML = "";
+    const letters = ["A", "B", "C", "D"];
+
+    quizConfig.questions.forEach((q, qIdx) => {
+        const card = document.createElement("div");
+        card.className = `question-card border-top-${qIdx % 8}`;
+
+        const userChoice = gameState.answers[qIdx];
+        const isAnswered = userChoice !== null;
+
+        let optionsHtml = "";
+        letters.forEach((letter, optIdx) => {
+            const optText = q.options[optIdx] || "";
+            let btnClass = "option-btn";
+            if (isAnswered && userChoice === letter) {
+                btnClass += (letter === q.correct) ? " correct" : " wrong";
+            }
+
+            optionsHtml += `
+                <button type="button"
+                        class="${btnClass}"
+                        data-q="${qIdx}"
+                        data-choice="${letter}"
+                        ${isAnswered ? "disabled" : ""}>
+                    <span class="opt-letter">${letter}.</span>
+                    <span>${renderMathSafe(optText)}</span>
+                </button>
+            `;
+        });
+
+        card.innerHTML = `
+            <div>
+                <div class="q-header">
+                    <span class="q-badge">Câu ${qIdx + 1}</span>
+                    <span class="q-weight">${q.weight} điểm</span>
+                </div>
+                <div class="q-text">${renderMathSafe(q.question)}</div>
+            </div>
+            <div class="options-list">${optionsHtml}</div>
+        `;
+        container.appendChild(card);
+    });
+
+    // Gắn sự kiện click đáp án
+    container.querySelectorAll(".option-btn").forEach(btn => {
+        btn.addEventListener("click", handleOptionClick);
+    });
+}
+
+function handleOptionClick(e) {
+    const btn = e.currentTarget;
+    const qIdx = Number(btn.dataset.q);
+    const choice = btn.dataset.choice;
+
+    // Chốt 1 lần duy nhất
+    if (gameState.answers[qIdx] !== null) return;
+
+    gameState.answers[qIdx] = choice;
+    const isCorrect = choice === quizConfig.questions[qIdx].correct;
+
+    if (isCorrect) {
+        gameState.unlockedBlocks[qIdx] = true;
+        showToast(`✅ Chính xác! Đang mở khóa Khối ${qIdx + 1}...`);
+    } else {
+        showToast(`❌ Chưa đúng rồi! Khối ${qIdx + 1} vẫn bị khóa.`);
+    }
+
+    renderQuestions();
+    renderBlocks();
+
+    // Tự động trượt mượt xuống khối chữ vừa được mở khóa
+    if (isCorrect) {
+        setTimeout(() => {
+            const targetBlock = document.getElementById(`block-card-${qIdx}`);
+            if (targetBlock) {
+                targetBlock.scrollIntoView({ behavior: "smooth", block: "center" });
+                targetBlock.classList.add("just-unlocked");
+                setTimeout(() => targetBlock.classList.remove("just-unlocked"), 1000);
+            }
+        }, 120);
+    }
+}
+
+function renderBlocks() {
+    const container = document.getElementById("blocks-container");
+    container.innerHTML = "";
+
+    quizConfig.questions.forEach((q, idx) => {
+        const isUnlocked = gameState.unlockedBlocks[idx];
+        const isCompleted = gameState.completedBlocks[idx];
+        const grid = gameState.blockGrids[idx];
+
+        let totalTargets = 0;
+        let foundTargets = 0;
+        grid.forEach(row => row.forEach(cell => {
+            if (cell.isTarget) {
+                totalTargets++;
+                if (cell.found) foundTargets++;
+            }
+        }));
+
+        const card = document.createElement("div");
+        card.id = `block-card-${idx}`;
+        card.className = "letter-block-card" +
+            (isCompleted ? " completed" : (isUnlocked ? " unlocked" : " locked"));
+
+        const headerText = isUnlocked
+            ? `Tìm chữ ${(q.decodeChar || "A").toUpperCase()}: ${foundTargets}/${totalTargets}`
+            : `🔒 Khối ${idx + 1} (Khóa)`;
+
+        let cellsHtml = "";
+        for (let r = 0; r < 7; r++) {
+            for (let c = 0; c < 5; c++) {
+                const cell = grid[r][c];
+                cellsHtml += `
+                    <div class="matrix-cell ${cell.found ? "found" : ""}"
+                         data-block="${idx}"
+                         data-r="${r}"
+                         data-c="${c}">
+                        ${cell.char}
+                    </div>
+                `;
+            }
+        }
+
+        const footerHtml = isCompleted
+            ? `<div class="revealed-digit">${q.cipherDigit}</div>`
+            : `<span class="locked-hint">${isUnlocked ? "Bấm hết các chữ giải mã để hiện số" : "Trả lời đúng Câu " + (idx + 1) + " để mở"}</span>`;
+
+        card.innerHTML = `
+            <div class="block-header">
+                <span>Khối ${idx + 1}</span>
+                <span>${headerText}</span>
+            </div>
+            <div class="matrix-5x7">${cellsHtml}</div>
+            <div class="block-footer-digit">${footerHtml}</div>
+        `;
+
+        container.appendChild(card);
+    });
+
+    // Gắn sự kiện click ô chữ cho các khối đang mở
+    container.querySelectorAll(".matrix-cell").forEach(cellEl => {
+        cellEl.addEventListener("click", handleCellClick);
+    });
+}
+
+function handleCellClick(e) {
+    const el = e.currentTarget;
+    const bIdx = Number(el.dataset.block);
+    const r = Number(el.dataset.r);
+    const c = Number(el.dataset.c);
+
+    // Khối khóa hoặc đã xong thì bỏ qua
+    if (!gameState.unlockedBlocks[bIdx] || gameState.completedBlocks[bIdx]) return;
+
+    const cell = gameState.blockGrids[bIdx][r][c];
+    if (cell.found) return;
+
+    if (cell.isTarget) {
+        cell.found = true;
+
+        // Kiểm tra đã tìm hết ô đích chưa
+        const allFound = gameState.blockGrids[bIdx].every(row =>
+            row.every(item => !item.isTarget || item.found)
+        );
+
+        if (allFound) {
+            gameState.completedBlocks[bIdx] = true;
+            showToast(`🎉 Hoàn thành Khối ${bIdx + 1}! Chữ số mật mã là ${quizConfig.questions[bIdx].cipherDigit}.`);
+        }
+
+        renderBlocks();
+        renderCipherBar();
+        updateBannerVisibility();
+    } else {
+        // Ô nền: không tính, không trừ điểm, rung nhẹ phản hồi
+        el.classList.remove("shake");
+        void el.offsetWidth;
+        el.classList.add("shake");
+    }
+}
+
+/**
+ * 8. FORMAT MẬT MÃ NHÓM 2-2-4 VÀ HIỂN THỊ BANNER
+ */
+function formatCipherCode224(raw) {
+    const clean = (raw || "").replace(/\s+/g, "").toUpperCase();
+    if (!clean) return "";
+    if (clean.length === 10) {
+        return `${clean.slice(0, 2)} ${clean.slice(2, 4)} ${clean.slice(4, 8)} ${clean.slice(8, 10)}`;
+    }
+    if (clean.length === 8) {
+        return `${clean.slice(0, 2)} ${clean.slice(2, 4)} ${clean.slice(4, 8)}`;
+    }
+    if (clean.length > 4) {
+        const p1 = clean.slice(0, 2);
+        const p2 = clean.slice(2, 4);
+        const p3 = clean.slice(4);
+        return `${p1} ${p2} ${p3}`;
+    }
+    return clean;
+}
+
+function updateBannerVisibility() {
+    const banner = document.getElementById("cipher-banner");
+    const allCompleted = gameState.completedBlocks.length > 0 &&
+                         gameState.completedBlocks.every(Boolean);
+
+    if (allCompleted) {
+        const formatted = formatCipherCode224(quizConfig.cipherText || DEFAULT_CIPHER);
+        document.getElementById("banner-code-text").textContent = formatted;
+        banner.classList.add("visible");
+    } else {
+        banner.classList.remove("visible");
+    }
+}
+
+/**
+ * 9. NỘP BÀI, CHẤM ĐIỂM & LÀM LẠI
+ */
+function handleSubmitQuiz() {
+    gameState.submitted = true;
+
+    let totalWeight = 0;
+    let earnedWeight = 0;
+    const wrongItems = [];
+
+    quizConfig.questions.forEach((q, idx) => {
+        const w = Number(q.weight) > 0 ? Number(q.weight) : 1;
+        totalWeight += w;
+        const userAns = gameState.answers[idx];
+
+        if (userAns === q.correct) {
+            earnedWeight += w;
+        } else {
+            const letters = ["A", "B", "C", "D"];
+            const userIdx = letters.indexOf(userAns);
+            const corrIdx = letters.indexOf(q.correct);
+
+            wrongItems.push({
+                index: idx + 1,
+                question: q.question,
+                userChoice: userAns ? `${userAns}. ${q.options[userIdx] || ""}` : "Chưa chọn đáp án",
+                correctChoice: `${q.correct}. ${q.options[corrIdx] || ""}`,
+                explanation: q.explanation || "Không có giải thích bổ sung."
+            });
+        }
+    });
+
+    const finalScore = totalWeight > 0 ? ((earnedWeight / totalWeight) * 10) : 0;
+    const scoreFormatted = Number.isInteger(finalScore) ? finalScore : finalScore.toFixed(2).replace(/\.?0+$/, "");
+
+    const sName = document.getElementById("student-name").value.trim() || "Chưa nhập tên";
+    const sClass = document.getElementById("student-class").value.trim() || "Chưa nhập lớp";
+
+    document.getElementById("result-student-summary").textContent =
+        `Học sinh: ${sName} — Lớp: ${sClass} | Số câu đúng: ${quizConfig.questions.length - wrongItems.length}/${quizConfig.questions.length}`;
+    document.getElementById("result-score-display").textContent = `${scoreFormatted} / 10 điểm`;
+
+    const reviewContainer = document.getElementById("review-section-container");
+    if (wrongItems.length === 0) {
+        reviewContainer.innerHTML = `
+            <div style="background: #dcfce7; color: #14532d; padding: 16px; border-radius: 12px; font-weight: 700;">
+                🌟 Tuyệt vời! Bạn đã trả lời đúng toàn bộ tất cả các câu hỏi!
+            </div>
+        `;
+    } else {
+        reviewContainer.innerHTML = `
+            <h4 style="margin-bottom: 12px; color: #991b1b; font-size: 1.05rem;">
+                📌 Danh sách các câu chưa đúng cần xem lại (${wrongItems.length} câu):
+            </h4>
+            <div class="review-list">
+                ${wrongItems.map(item => `
+                    <div class="review-item">
+                        <div class="review-q">Câu ${item.index}: ${renderMathSafe(item.question)}</div>
+                        <div class="review-ans">• Bạn đã chọn: <strong style="color: #dc2626;">${renderMathSafe(item.userChoice)}</strong></div>
+                        <div class="review-ans">• Đáp án đúng: <strong style="color: #16a34a;">${renderMathSafe(item.correctChoice)}</strong></div>
+                        <div class="review-exp">💡 <strong>Giải thích:</strong> ${renderMathSafe(item.explanation)}</div>
+                    </div>
+                `).join("")}
+            </div>
+        `;
+    }
+
+    const panel = document.getElementById("results-panel");
+    panel.classList.add("visible");
+    panel.scrollIntoView({ behavior: "smooth" });
+    showToast(`📊 Đã nộp bài! Điểm của bạn: ${scoreFormatted}/10`);
+}
+
+function handleResetQuiz() {
+    initGameState();
+    document.getElementById("results-panel").classList.remove("visible");
+    renderAll();
+    showToast("🔄 Đã làm mới phiếu học tập!");
+}
+
+/**
+ * 10. PANEL SOẠN ĐỀ CỦA GIÁO VIÊN
+ */
+function openTeacherPanel() {
+    document.getElementById("tp-title").value = quizConfig.title || "";
+    document.getElementById("tp-cipher").value = quizConfig.cipherText || DEFAULT_CIPHER;
+    document.getElementById("tp-color-picker").value = quizConfig.accentColor || DEFAULT_COLOR;
+    renderTeacherQuestionsEditor();
+    document.getElementById("teacher-modal").classList.add("open");
+}
+
+function closeTeacherPanel() {
+    document.getElementById("teacher-modal").classList.remove("open");
+}
+
+function renderTeacherQuestionsEditor() {
+    const listEl = document.getElementById("tp-questions-list");
+    document.getElementById("tp-q-count").textContent = quizConfig.questions.length;
+    listEl.innerHTML = "";
+
+    quizConfig.questions.forEach((q, idx) => {
+        const card = document.createElement("div");
+        card.className = "tp-q-card";
+        card.dataset.idx = idx;
+
+        const missingAnsWarning = !["A", "B", "C", "D"].includes(q.correct)
+            ? `<span style="color:#dc2626; font-size:0.8rem;">⚠️ Thiếu đáp án đúng</span>`
+            : "";
+
+        card.innerHTML = `
+            <div class="tp-q-top">
+                <span>Câu ${idx + 1} ${missingAnsWarning}</span>
+                ${quizConfig.questions.length > 1
+                    ? `<button type="button" class="btn-del-q" data-idx="${idx}" style="background:#fee2e2; color:#dc2626; border:none; padding:4px 10px; border-radius:6px; font-weight:700; cursor:pointer;">Xóa câu</button>`
+                    : ""}
+            </div>
+            <div class="tp-field">
+                <label>Nội dung câu hỏi (dùng $...$ cho công thức Hóa/Toán)</label>
+                <textarea rows="2" class="tp-input-q">${escapeHtml(q.question)}</textarea>
+            </div>
+            <div class="tp-q-grid-4">
+                <div class="tp-field"><label>Đáp án A</label><input type="text" class="tp-input-opt0" value="${escapeHtml(q.options[0] || "")}"></div>
+                <div class="tp-field"><label>Đáp án B</label><input type="text" class="tp-input-opt1" value="${escapeHtml(q.options[1] || "")}"></div>
+                <div class="tp-field"><label>Đáp án C</label><input type="text" class="tp-input-opt2" value="${escapeHtml(q.options[2] || "")}"></div>
+                <div class="tp-field"><label>Đáp án D</label><input type="text" class="tp-input-opt3" value="${escapeHtml(q.options[3] || "")}"></div>
+            </div>
+            <div class="tp-q-meta">
+                <div class="tp-field">
+                    <label>Đáp án đúng</label>
+                    <select class="tp-input-correct">
+                        <option value="A" ${q.correct === "A" ? "selected" : ""}>A</option>
+                        <option value="B" ${q.correct === "B" ? "selected" : ""}>B</option>
+                        <option value="C" ${q.correct === "C" ? "selected" : ""}>C</option>
+                        <option value="D" ${q.correct === "D" ? "selected" : ""}>D</option>
+                    </select>
+                </div>
+                <div class="tp-field">
+                    <label>Chữ giải mã (A–Z)</label>
+                    <input type="text" maxlength="1" class="tp-input-decode" value="${escapeHtml(q.decodeChar || q.correct || "A")}">
+                </div>
+                <div class="tp-field">
+                    <label>Chữ số mật mã (0–9)</label>
+                    <input type="number" min="0" max="9" class="tp-input-digit" value="${q.cipherDigit ?? 0}">
+                </div>
+                <div class="tp-field">
+                    <label>Điểm trọng số</label>
+                    <input type="number" step="0.25" min="0.1" class="tp-input-weight" value="${q.weight ?? 1}">
+                </div>
+            </div>
+            <div class="tp-field" style="margin-top: 8px;">
+                <label>Lời giải thích ngắn (hiện khi xem lại câu sai)</label>
+                <input type="text" class="tp-input-exp" value="${escapeHtml(q.explanation || "")}">
+            </div>
+        `;
+        listEl.appendChild(card);
+    });
+
+    // Đồng bộ tự động chữ giải mã khi giáo viên đổi đáp án đúng (nếu chưa tùy chỉnh khác)
+    listEl.querySelectorAll(".tp-input-correct").forEach(sel => {
+        sel.addEventListener("change", (e) => {
+            const card = e.target.closest(".tp-q-card");
+            const decodeInput = card.querySelector(".tp-input-decode");
+            decodeInput.value = e.target.value;
+        });
+    });
+
+    listEl.querySelectorAll(".btn-del-q").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            syncTeacherFormToMemory();
+            const idx = Number(e.currentTarget.dataset.idx);
+            quizConfig.questions.splice(idx, 1);
+            renderTeacherQuestionsEditor();
+        });
+    });
+}
+
+function syncTeacherFormToMemory() {
+    const titleVal = document.getElementById("tp-title").value.trim();
+    const cipherVal = document.getElementById("tp-cipher").value.trim() || DEFAULT_CIPHER;
+    const colorVal = document.getElementById("tp-color-picker").value || DEFAULT_COLOR;
+
+    const cards = document.querySelectorAll("#tp-questions-list .tp-q-card");
+    const updatedQuestions = [];
+    let totalWeight = 0;
+
+    cards.forEach(card => {
+        const qText = card.querySelector(".tp-input-q").value.trim();
+        const opts = [
+            card.querySelector(".tp-input-opt0").value.trim(),
+            card.querySelector(".tp-input-opt1").value.trim(),
+            card.querySelector(".tp-input-opt2").value.trim(),
+            card.querySelector(".tp-input-opt3").value.trim()
+        ];
+        const correct = card.querySelector(".tp-input-correct").value || "A";
+        let decodeChar = card.querySelector(".tp-input-decode").value.trim().toUpperCase().replace(/[^A-Z]/g, "");
+        if (!decodeChar) decodeChar = correct;
+
+        let cipherDigit = parseInt(card.querySelector(".tp-input-digit").value, 10);
+        if (isNaN(cipherDigit) || cipherDigit < 0 || cipherDigit > 9) cipherDigit = 0;
+
+        let weight = parseFloat(card.querySelector(".tp-input-weight").value);
+        if (isNaN(weight) || weight <= 0) weight = 1;
+        totalWeight += weight;
+
+        const explanation = card.querySelector(".tp-input-exp").value.trim();
+
+        updatedQuestions.push({
+            question: qText || "Câu hỏi chưa có nội dung",
+            options: opts,
+            correct,
+            decodeChar: decodeChar.charAt(0),
+            cipherDigit,
+            weight,
+            explanation
+        });
+    });
+
+    if (totalWeight <= 0 && updatedQuestions.length > 0) {
+        updatedQuestions[0].weight = 1;
+    }
+
+    quizConfig.title = titleVal;
+    quizConfig.cipherText = cipherVal;
+    quizConfig.accentColor = colorVal;
+    quizConfig.questions = updatedQuestions;
+}
+
+function handleSaveQuiz() {
+    syncTeacherFormToMemory();
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(quizConfig));
+        initGameState();
+        document.getElementById("results-panel").classList.remove("visible");
+        renderAll();
+        closeTeacherPanel();
+        showToast("💾 Đã lưu đề thành công! Khung chữ đã xếp lại theo đề mới.");
+    } catch (e) {
+        showToast("⚠️ Không thể lưu vào localStorage trình duyệt.");
+    }
+}
+
+function handleRestoreDefault() {
+    quizConfig = {
+        title: DEFAULT_TITLE,
+        cipherText: DEFAULT_CIPHER,
+        accentColor: DEFAULT_COLOR,
+        questions: JSON.parse(JSON.stringify(DEFAULT_QUESTIONS))
+    };
+    try {
+        localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+
+    openTeacherPanel();
+    initGameState();
+    document.getElementById("results-panel").classList.remove("visible");
+    renderAll();
+    showToast("↩️ Đã khôi phục về đề mẫu mặc định!");
+}
+
+/**
+ * 11. NHẬP ĐỀ TỪ FILE WORD (.DOCX) QUA MAMMOTH.JS
+ */
+async function handleWordImport(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.name.toLowerCase().endsWith(".docx")) {
+        showToast("⚠️ Chỉ chấp nhận file định dạng .docx!");
+        e.target.value = "";
+        return;
+    }
+
+    if (!window.mammoth) {
+        showToast("⚠️ Thư viện đọc Word chưa tải xong, vui lòng kiểm tra kết nối mạng.");
+        return;
+    }
+
+    try {
+        const arrayBuffer = await file.arrayBuffer();
+        const result = await window.mammoth.convertToHtml({ arrayBuffer });
+        const html = result.value;
+
+        // Chuyển thẻ <sup> và <sub> sang cú pháp LaTeX $^{...}$ và $_{...}$
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = html;
+
+        tempDiv.querySelectorAll("sup").forEach(el => {
+            const txt = el.textContent.trim();
+            if (txt) el.replaceWith(`$^{${txt}}$`);
+        });
+
+        tempDiv.querySelectorAll("sub").forEach(el => {
+            const txt = el.textContent.trim();
+            if (txt) el.replaceWith(`$_{${txt}}$`);
+        });
+
+        // Gộp các công thức liền kề như H$_{2}$SO$_{4}$ -> $H_{2}SO_{4}$
+        const lines = [];
+        tempDiv.querySelectorAll("p, li, tr").forEach(block => {
+            let line = block.textContent.replace(/\u00A0/g, " ").trim();
+            line = line.replace(/\$\s*\$/g, "");
+            if (line) lines.push(line);
+        });
+
+        const parsedQuestions = parseWordLinesToQuestions(lines);
+        if (parsedQuestions.length === 0) {
+            showToast("⚠️ Không tìm thấy câu hỏi đúng định dạng 'Câu 1:' trong file Word.");
+            return;
+        }
+
+        const missingCount = parsedQuestions.filter(q => q._missingAns).length;
+        parsedQuestions.forEach(q => delete q._missingAns);
+
+        quizConfig.questions = parsedQuestions;
+        renderTeacherQuestionsEditor();
+
+        if (missingCount > 0) {
+            showToast(`📄 Đã nhập ${parsedQuestions.length} câu! Có ${missingCount} câu thiếu dòng "Đáp án:", vui lòng chọn bổ sung rồi bấm Lưu đề.`);
+        } else {
+            showToast(`📄 Đã nhập thành công ${parsedQuestions.length} câu từ Word! Hãy bấm "Lưu đề" để áp dụng.`);
+        }
+    } catch (err) {
+        console.error(err);
+        showToast("❌ Lỗi khi đọc file .docx. Vui lòng kiểm tra lại cấu trúc file.");
+    } finally {
+        e.target.value = "";
+    }
+}
+
+function parseWordLinesToQuestions(lines) {
+    const questions = [];
+    let current = null;
+
+    const qStartRegex = /^Câu\s*\d+\s*[:.)]\s*(.+)/i;
+    const ansLineRegex = /^Đáp\s*án\s*[:.]\s*([A-D])/i;
+
+    lines.forEach(line => {
+        const qMatch = line.match(qStartRegex);
+        if (qMatch) {
+            if (current) questions.push(finalizeParsedQuestion(current, questions.length));
+            current = {
+                question: qMatch[1].trim(),
+                options: ["", "", "", ""],
+                correct: "",
+                _missingAns: true
+            };
+            return;
+        }
+
+        if (!current) return;
+
+        const ansMatch = line.match(ansLineRegex);
+        if (ansMatch) {
+            current.correct = ansMatch[1].toUpperCase();
+            current._missingAns = false;
+            return;
+        }
+
+        // Tách nhiều đáp án trên cùng 1 dòng hoặc từng dòng (A. ... B. ... C. ... D. ...)
+        const optMatches = [...line.matchAll(/(?:^|\s+)([A-D])[.)]\s*([\s\S]*?)(?=(?:\s+[A-D][.)]\s*)|$)/g)];
+        if (optMatches.length > 0) {
+            optMatches.forEach(m => {
+                const idx = ["A", "B", "C", "D"].indexOf(m[1].toUpperCase());
+                if (idx !== -1) {
+                    current.options[idx] = m[2].trim();
+                }
+            });
+        } else if (!current.options[0] && !current.options[1]) {
+            current.question += " " + line;
+        }
+    });
+
+    if (current) {
+        questions.push(finalizeParsedQuestion(current, questions.length));
+    }
+
+    return questions;
+}
+
+function finalizeParsedQuestion(raw, index) {
+    const validCorrect = ["A", "B", "C", "D"].includes(raw.correct) ? raw.correct : "A";
+    return {
+        question: raw.question,
+        options: raw.options,
+        correct: validCorrect,
+        decodeChar: validCorrect,
+        cipherDigit: index % 10,
+        weight: 1,
+        explanation: "",
+        _missingAns: raw._missingAns
+    };
+}
+
+/**
+ * 12. XUẤT FILE HTML ĐỘC LẬP CHO HỌC SINH
+ */
+function handleExportStudentHtml() {
+    // Tự động lưu đề trước khi xuất
+    syncTeacherFormToMemory();
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(quizConfig));
+    } catch (e) {}
+
+    initGameState();
+    renderAll();
+
+    // Tạo bản sao DOM sạch để xuất file
+    const cloneDoc = document.documentElement.cloneNode(true);
+    const cloneBody = cloneDoc.querySelector("body");
+    cloneBody.dataset.studentMode = "true";
+
+    // Xóa nút Soạn đề và Modal khỏi HTML xuất ra
+    const btnTeacher = cloneDoc.querySelector("#btn-open-teacher");
+    if (btnTeacher) btnTeacher.remove();
+    const modalTeacher = cloneDoc.querySelector("#teacher-modal");
+    if (modalTeacher) modalTeacher.remove();
+
+    // Đặt lại các input họ tên / lớp trống
+    const nameInput = cloneDoc.querySelector("#student-name");
+    if (nameInput) nameInput.setAttribute("value", "");
+    const classInput = cloneDoc.querySelector("#student-class");
+    if (classInput) classInput.setAttribute("value", "");
+
+    // Nhúng cấu hình đề hiện tại vào script #embedded-quiz-data
+    const embeddedScript = cloneDoc.querySelector("#embedded-quiz-data");
+    if (embeddedScript) {
+        embeddedScript.textContent = JSON.stringify(quizConfig);
+    }
+
+    const finalHtml = "<!DOCTYPE html>\n" + cloneDoc.outerHTML;
+    const blob = new Blob([finalHtml], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Phieu_Hoc_Tap_Giai_Ma_Mat_Ma_HS.html";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showToast("📥 Đã lưu đề và tải xuống file HTML dành cho học sinh!");
+}
+
+/**
+ * 13. TIỆN ÍCH THÔNG BÁO TOAST
+ */
+let toastTimer = null;
+function showToast(msg) {
+    const box = document.getElementById("toast-box");
+    box.textContent = msg;
+    box.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        box.classList.remove("show");
+    }, 3500);
+}
+
+/**
+ * 14. GẮN SỰ KIỆN & KHỞI CHẠY KHI TẢI TRANG
+ */
+window.addEventListener("DOMContentLoaded", () => {
+    loadInitialConfig();
+    initGameState();
+    renderAll();
+
+    // Re-render KaTeX sau khi script defer KaTeX tải hoàn tất
+    window.addEventListener("load", () => {
+        renderQuestions();
+    });
+
+    // Các nút hành động chính
+    document.getElementById("btn-submit").addEventListener("click", handleSubmitQuiz);
+    document.getElementById("btn-reset").addEventListener("click", handleResetQuiz);
+    document.getElementById("btn-print").addEventListener("click", () => window.print());
+
+    // Sự kiện Panel Giáo viên (nếu không phải bản xuất HS)
+    const btnOpenTeacher = document.getElementById("btn-open-teacher");
+    if (btnOpenTeacher) {
+        btnOpenTeacher.addEventListener("click", openTeacherPanel);
+        document.getElementById("btn-close-teacher").addEventListener("click", closeTeacherPanel);
+        document.getElementById("btn-save-quiz").addEventListener("click", handleSaveQuiz);
+        document.getElementById("btn-restore-default").addEventListener("click", handleRestoreDefault);
+        document.getElementById("btn-export-student").addEventListener("click", handleExportStudentHtml);
+        document.getElementById("tp-word-input").addEventListener("change", handleWordImport);
+
+        document.querySelectorAll(".swatch-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.getElementById("tp-color-picker").value = btn.dataset.color;
+            });
+        });
+
+        document.getElementById("btn-add-question").addEventListener("click", () => {
+            syncTeacherFormToMemory();
+            quizConfig.questions.push({
+                question: "Nhập nội dung câu hỏi mới...",
+                options: ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"],
+                correct: "A",
+                decodeChar: "A",
+                cipherDigit: quizConfig.questions.length % 10,
+                weight: 1,
+                explanation: ""
+            });
+            renderTeacherQuestionsEditor();
+        });
+
+        document.getElementById("btn-sync-cipher-count").addEventListener("click", () => {
+            syncTeacherFormToMemory();
+            const cleanCipher = (document.getElementById("tp-cipher").value || "").replace(/\s+/g, "").toUpperCase();
+            if (!cleanCipher) {
+                showToast("⚠️ Vui lòng nhập từ khóa mật mã trước khi đồng bộ!");
+                return;
+            }
+            const targetLen = cleanCipher.length;
+            const currentLen = quizConfig.questions.length;
+
+            if (targetLen > currentLen) {
+                for (let i = currentLen; i < targetLen; i++) {
+                    const ch = cleanCipher[i];
+                    const isDigit = /^[0-9]$/.test(ch);
+                    quizConfig.questions.push({
+                        question: `Nhập nội dung câu hỏi số ${i + 1}...`,
+                        options: ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"],
+                        correct: "A",
+                        decodeChar: /^[A-Z]$/.test(ch) ? ch : "A",
+                        cipherDigit: isDigit ? Number(ch) : (i % 10),
+                        weight: 1,
+                        explanation: ""
+                    });
+                }
+                showToast(`➕ Đã thêm ${targetLen - currentLen} câu cho khớp từ khóa "${cleanCipher}" (${targetLen} ký tự).`);
+            } else if (targetLen < currentLen) {
+                quizConfig.questions = quizConfig.questions.slice(0, targetLen);
+                showToast(`✂️ Đã rút gọn còn ${targetLen} câu cho khớp từ khóa "${cleanCipher}".`);
+            } else {
+                showToast(`✅ Số câu hỏi đã khớp sẵn với ${targetLen} ký tự của từ khóa!`);
+            }
+
+            // Gán chữ số mật mã nếu ký tự tương ứng trong từ khóa là số 0-9
+            for (let i = 0; i < targetLen; i++) {
+                if (/^[0-9]$/.test(cleanCipher[i])) {
+                    quizConfig.questions[i].cipherDigit = Number(cleanCipher[i]);
+                }
+            }
+            renderTeacherQuestionsEditor();
+        });
+    }
+});
+</script>
+</body>
+</html>
